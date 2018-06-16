@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>TEST</title>
-        <script src="common.js"></script>
+        <script src="build/common.js"></script>
     </head>
 <body>
     <template id="tmp1">
@@ -11,7 +11,11 @@
     <button type="button">템플릿보이기</button>
 <script>
 
+    var preOnload = window.onload;
     window.onload = function(){
+        if(preOnload){
+            preOnload();
+        }
         var tmp1Obj = new Templates(document,'tmp1');
         document.querySelector('button').onclick=function(){
             tmp1Obj.show();
