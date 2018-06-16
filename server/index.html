@@ -2,38 +2,35 @@
     <head>
         <meta charset="utf-8">
         <title>TEST</title>
-<script>
-    function makeUserTable(obj){
-        var tableStr = '<table border="1">';
-        tableStr += '<tr>';
-        tableStr += '<th>';
-        tableStr += '이름';
-        tableStr += '</th>';
-        tableStr += '<th>';
-        tableStr += '나이';
-        tableStr += '</th>';
-        tableStr += '</tr>';
-        tableStr += '<tr>';
-        tableStr += '<td>';
-        tableStr += '홍길동';
-        tableStr += '</td>';
-        tableStr += '<td>';
-        tableStr += '33';
-        tableStr += '</td>';
-        tableStr += '</tr>';
-        tableStr += '</table>';
-        obj.innerHTML = tableStr;
-    }
-</script>
     </head>
 <body>
-    <div id="div1">난 div1</div>
-    <button type="button">눌러봐~</button>
+    <div id="div1">난 div1</div><br>
+    ID : <input type="text" id="id"><br>
+    PWD : <input type="password" id="pwd"><br>
+    <button type="button">Login</button>
 <script>
+    function ElementTest(id){
+        this.obj = document.getElementById(id);
+
+        this.getV = function(){
+            return this.obj.value;
+        }
+
+        this.getId = function(){
+            return this.obj.id;
+        }
+
+        this.getObj = function(){
+            return this.obj;
+        }
+    }
+
+
     window.onload = function(){
         document.querySelector('button').onclick = function(){
-            var obj = document.querySelector('#div1');
-            makeUserTable(obj);
+            var divObj = document.getElementById('div1');
+            divObj.innerHTML = '입력하신 아이디 : ' + idObj.value;
+            divObj.innerHTML += '입력하신 비밀번호 : ' + pwdObj.value;
         }
     }
 </script>
