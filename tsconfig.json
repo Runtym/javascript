@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
       "target": "es6",
-      "module": "commonjs",
-      "sourceMap": true
+      "module": "none",
+      "sourceMap": true,
+      "outFile":"src/common.js"
     },
     "include":["src/**/*"],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/test.ts"
     ]
   }
