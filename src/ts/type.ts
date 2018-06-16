@@ -17,7 +17,25 @@ class Greeting {
     }
 }
 let tmp = new Greeting("World!!");
+let str:string = tmp.greeting;
+alert(str);
 
+function logAccess(obj,prop,descriptor){
+    const delegate = descriptor.value;
+    descriptor.value = function(param){
+        console.log(`${obj.constructor.name}'s ${prop} was called!`);
+        return delegate.apply(obj,arguments);
+    }
+}
+class MoneySafe{
+    open:boolean;
+    @logAccess
+    openSave(param:any):void{
+        this.open = true;
+    }
+}
+const safe = new MoneySafe();
+safe.openSave('test');
 window.onload = function(){
     var rDivObj = document.querySelector('#resultDiv');
     if(!rDivObj){
