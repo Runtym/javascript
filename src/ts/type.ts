@@ -22,20 +22,43 @@ alert(str);
 
 function logAccess(obj,prop,descriptor){
     const delegate = descriptor.value;
-    descriptor.value = function(param){
-        console.log(`${obj.constructor.name}'s ${prop} was called!`);
+    descriptor.value = function(...params){
+        console.log(`${obj.constructor.name}'s ${prop}(${params}) was called!`);
         return delegate.apply(obj,arguments);
     }
+}
+
+function validationLogin(obj,prop,descriptor){
+    const delegate = descriptor.value;
+    descriptor.value = function(user:User){
+        console.log('아이디 비번 유효성검사 시작');
+        if(user.id.trim().length<4){
+            alert('아이디는 3글자 이상입니다.');
+            return false;
+        }
+        return delegate.apply(obj,arguments);
+    }
+}
+
+interface User{
+    id:string;
+    pwd:string;
 }
 class MoneySafe{
     open:boolean;
     @logAccess
-    openSave(param:any):void{
+    openSave(param:any,int):void{
         this.open = true;
     }
+    @validationLogin
+    login(user:User):boolean{
+        return true;
+    }
 }
+
 const safe = new MoneySafe();
-safe.openSave('test');
+safe.openSave('test',1);
+safe.login({id:'red',pwd:'123'});
 window.onload = function(){
     var rDivObj = document.querySelector('#resultDiv');
     if(!rDivObj){
@@ -45,3 +68,4 @@ window.onload = function(){
         rDivObj.innerHTML = '결과 : ' + tmp.sayHello();
     }
 }
+//    "javascript.implicitProjectConfig.experimentalDecorators": true

@@ -28,24 +28,45 @@ let str = tmp.greeting;
 alert(str);
 function logAccess(obj, prop, descriptor) {
     const delegate = descriptor.value;
-    descriptor.value = function (param) {
-        console.log(`${obj.constructor.name}'s ${prop} was called!`);
+    descriptor.value = function (...params) {
+        console.log(`${obj.constructor.name}'s ${prop}(${params}) was called!`);
+        return delegate.apply(obj, arguments);
+    };
+}
+function validationLogin(obj, prop, descriptor) {
+    const delegate = descriptor.value;
+    descriptor.value = function (user) {
+        console.log('아이디 비번 유효성검사 시작');
+        if (user.id.trim().length < 4) {
+            alert('아이디는 3글자 이상입니다.');
+            return false;
+        }
         return delegate.apply(obj, arguments);
     };
 }
 class MoneySafe {
-    openSave(param) {
+    openSave(param, int) {
         this.open = true;
+    }
+    login(user) {
+        return true;
     }
 }
 __decorate([
     logAccess,
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], MoneySafe.prototype, "openSave", null);
+__decorate([
+    validationLogin,
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Boolean)
+], MoneySafe.prototype, "login", null);
 const safe = new MoneySafe();
-safe.openSave('test');
+safe.openSave('test', 1);
+safe.login({ id: 'red', pwd: '123' });
 window.onload = function () {
     var rDivObj = document.querySelector('#resultDiv');
     if (!rDivObj) {
@@ -55,4 +76,5 @@ window.onload = function () {
         rDivObj.innerHTML = '결과 : ' + tmp.sayHello();
     }
 };
+//    "javascript.implicitProjectConfig.experimentalDecorators": true
 //# sourceMappingURL=common.js.map
