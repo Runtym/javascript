@@ -5,6 +5,7 @@ app.use('/scripts', exp.static(__dirname + '/../node_modules'));
 var url = '';
 const rootPath = path.resolve(__dirname + '/../src');
 const errPage = rootPath + '/views/error.html';
+const port = 8080;
 
 app.use('/' , (req,res,next)=>{
     url = req.url;
@@ -24,6 +25,6 @@ app.use('/' , (req,res,next)=>{
     }
 });
 
-app.listen(80 , function(){
-    console.log('80포트로 서버 시작');
+app.listen(port , function(){
+    console.log('포트로 서버 시작[port : ' + port + ']');
 })
