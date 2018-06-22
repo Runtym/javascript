@@ -127,3 +127,8 @@ typings/
 14. path 설치
  - npm install --save path
 
+15. angular-cli 설치
+ - npm install -g @angular/cli
+
+16. angular test프로젝트 생성
+ - ng new test-app

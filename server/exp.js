@@ -4,7 +4,7 @@ const path = require("path");
 app.use('/scripts', exp.static(__dirname + '/../node_modules'));
 var url = '';
 const rootPath = path.resolve(__dirname + '/../src');
-const errorPath = rootPath + '/views/error.html';
+const errPage = rootPath + '/views/error.html';
 
 app.use('/' , (req,res,next)=>{
     url = req.url;
@@ -16,13 +16,14 @@ app.use('/' , (req,res,next)=>{
         res.sendFile(rootPath+url,(err)=>{
             if(err){
                 console.log(err);
-                res.sendFile(errorPath);
+                res.sendFile(errPage);
             }
         });
     }else{
-        res.sendFile(errorPath);
+        res.sendFile(errPage);
     }
 });
+
 app.listen(80 , function(){
     console.log('80포트로 서버 시작');
 })
