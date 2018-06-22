@@ -6,6 +6,9 @@ class Parents{
     constructor(){
         alert("부모호출!");
     }
+    getMyMoney():number{
+        return this.myMoney;
+    }
 }
 
 class Child extends Parents{
@@ -13,8 +16,7 @@ class Child extends Parents{
         return this.money;
     }
     getMyMoney():number{
-        //return this.myMoney;
-        return 0;
+        return super.getMyMoney();
     }
 }
 
