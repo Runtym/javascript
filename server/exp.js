@@ -11,9 +11,11 @@ app.use('/' , (req,res,next)=>{
     if(url==='/'){
         url = '/views/index.html';
     }
-    if(url.endsWith('.js') || url.endsWith('html')|| url.endsWith('.js.map')){
+    if(url.endsWith('.js') || url.endsWith('html')|| url.endsWith('.js.map')|| url.endsWith('.ts')){
+        console.log(rootPath+url);
         res.sendFile(rootPath+url,(err)=>{
             if(err){
+                console.log(err);
                 res.sendFile(errorPath);
             }
         });

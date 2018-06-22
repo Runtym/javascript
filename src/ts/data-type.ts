@@ -30,7 +30,7 @@ makeHtml(`num2 : ${num2}`);
 var str1 : string = 'abc';
 var str2 : string = "abc";
 makeHtml(`str1 : ${str1}`);
-makeHtml(`str1 : ${str1}`);
+makeHtml(`str2 : ${str2}`);
 
 //논리형 데이터 타입
 var bl1 : boolean = true;
