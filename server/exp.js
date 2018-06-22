@@ -3,20 +3,22 @@ const app = exp();
 const path = require("path");
 app.use('/scripts', exp.static(__dirname + '/../node_modules'));
 var url = '';
+const rootPath = path.resolve(__dirname + '/../src');
+const errorPath = rootPath + '/views/error.html';
 
 app.use('/' , (req,res,next)=>{
     url = req.url;
     if(url==='/'){
-        url = '/index.html';
+        url = '/views/index.html';
     }
-    if(url.endsWith('.js') || url.endsWith('html')){
-        res.sendFile(path.resolve(__dirname + '/../src' + url),(err)=>{
+    if(url.endsWith('.js') || url.endsWith('html')|| url.endsWith('.js.map')){
+        res.sendFile(rootPath+url,(err)=>{
             if(err){
-                res.sendFile(path.resolve(__dirname + '/../src/error.html'));
+                res.sendFile(errorPath);
             }
         });
     }else{
-        res.sendFile(path.resolve(__dirname + '/../src/error.html'));
+        res.sendFile(errorPath);
     }
 });
 app.listen(80 , function(){

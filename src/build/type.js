@@ -77,4 +77,4 @@ window.onload = function () {
     }
 };
 //    "javascript.implicitProjectConfig.experimentalDecorators": true
-//# sourceMappingURL=common.js.map
+//# sourceMappingURL=type.js.map

@@ -3,7 +3,7 @@
       "target": "es6",
       "module": "none",
       "sourceMap": true,
-      "outFile":"src/build/common.js",
+      "outDir": "src/build", 
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
     },

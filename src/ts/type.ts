@@ -15,7 +15,7 @@ class Greeting {
     sayHello() {
         return "Hello " + this.greeting;
     }
-}
+} 
 let tmp = new Greeting("World!!");
 let str:string = tmp.greeting;
 alert(str);
