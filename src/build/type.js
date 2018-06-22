@@ -61,7 +61,7 @@ __decorate([
 __decorate([
     validationLogin,
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [User]),
     __metadata("design:returntype", Boolean)
 ], MoneySafe.prototype, "login", null);
 const safe = new MoneySafe();

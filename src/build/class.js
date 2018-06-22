@@ -4,14 +4,16 @@ class Parents {
         this.myMoney = 100;
         alert("부모호출!");
     }
+    getMyMoney() {
+        return this.myMoney;
+    }
 }
 class Child extends Parents {
     getMoney() {
         return this.money;
     }
     getMyMoney() {
-        //return this.myMoney;
-        return 0;
+        return super.getMyMoney();
     }
 }
 let child = new Child();
