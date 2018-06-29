@@ -130,11 +130,38 @@ typings/
 15. angular-cli 설치
  - npm install -g @angular/cli
 
-16. angular test프로젝트 생성
- - ng new test-app
+16. angular test프로젝트 생성 with bootstrap
+ - ng new test-boot-app --style scss --prefix abe
 
+17 bootstrap 설치
+ - npm i -s bootstrap
+ - npm i --save @angular/material
+ - npm i --save @angular/cdk
+
+18. angualr.json 수정
+ - 
+    "styles": [
+      "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
+      "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+      "src/styles.scss"
+    ],
+19. styles-variables.scss 생성
+ - $grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$link-hover-decoration: none;    // remove underline from button links
+
+$link-color: #3f51b5;            // set link color based on the used material theme
+$link-hover-color: currentColor;
+
+20. 
 17. npm install --save mongoose body-parser
-
+ - 
 18. 몽고디비 다운
  - https://www.mongodb.com/download-center?jmp=nav#atlas
 
@@ -145,3 +172,8 @@ typings/
 20. 몽고디비 실행
  - mongod --dbpath 실제 data쌓이 경로명
 
+21. heroku에 배포
+ - heroku 설치
+ - hreoku login
+ - hreoku create
+ - git push heroku master
